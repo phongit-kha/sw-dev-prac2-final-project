@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import Header from "@/component/Header";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default async function RootLayout({
         <NextAuthProvider session={nextSession}>
           <Header />
           <main className="pt-24 pb-16 min-h-screen">{children}</main>
+          <Toaster position="top-center" />
         </NextAuthProvider>
       </body>
     </html>

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import { BookOpen, ChevronDown, LogOut, UserRound } from "lucide-react";
 import { useMemo, useState } from "react";
+import toast from "react-hot-toast";
 
 const sharedLinks = [{ href: "/demo", label: "Product Demo" }];
 const guestLinks: { href: string; label: string }[] = [];
@@ -23,9 +24,18 @@ const adminLinks = [
 
 export default function HeaderClient() {
   const pathname = usePathname();
+  const router = useRouter();
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
   const role = session?.user?.role === "admin" ? "admin" : "member";
+
+  const handleSignOut = async () => {
+    setOpen(false);
+    await signOut({ redirect: false });
+    toast.success("Signed out successfully!");
+    router.push("/");
+    router.refresh();
+  };
 
   const links = useMemo(() => {
     if (!session) return guestLinks;
@@ -76,14 +86,13 @@ export default function HeaderClient() {
               >
                 My profile
               </Link>
-              <Link
-                href="/api/auth/signout"
-                className="mt-1 flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50"
-                onClick={() => setOpen(false)}
+              <button
+                onClick={handleSignOut}
+                className="mt-1 w-full flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50"
               >
                 Sign out
                 <LogOut className="h-4 w-4" />
-              </Link>
+              </button>
             </div>
           )}
         </div>

@@ -2,7 +2,9 @@
 
 import { useState, useTransition } from "react";
 import { registerUser } from "@/libs/auth";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function RegisterPage() {
   const [form, setForm] = useState({
@@ -30,15 +32,35 @@ export default function RegisterPage() {
     startTransition(async () => {
       try {
         await registerUser(form);
-        setSuccess("Registration successful. You can sign in now.");
+        toast.success("Registration successful. Signing you in...");
+
+        // Automatically sign in after successful registration
+        const res = await signIn("credentials", {
+          email: form.email,
+          password: form.password,
+          redirect: false,
+          callbackUrl: "/",
+        });
+
+        if (res?.error) {
+          const errorMessage =
+            "Registration successful but login failed. Please try logging in manually.";
+          setError(errorMessage);
+          toast.error(errorMessage);
+          return;
+        }
+
+        // Successfully signed in, redirect to home page
+        toast.success("Signed in successfully!");
+        window.location.href = "/";
       } catch (err) {
         const message =
           err instanceof Error ? err.message : "Registration failed";
-        setError(
-          message.includes("Request rejected")
-            ? "Registration failed. Please check your information or try a different email."
-            : message
-        );
+        const errorMessage = message.includes("Request rejected")
+          ? "Registration failed. Please check your information or try a different email."
+          : message;
+        setError(errorMessage);
+        toast.error(errorMessage);
       }
     });
   };

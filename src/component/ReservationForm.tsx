@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { Book } from "../../interfaces";
 import { createReservation } from "@/libs/reservations";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface Props {
   books: Book[];
@@ -50,9 +51,12 @@ export default function ReservationForm({ books, token }: Props) {
       try {
         await createReservation(token, form);
         setForm({ ...form, borrowDate: "", pickupDate: "" });
+        toast.success("Reservation created successfully!");
         router.refresh();
       } catch (err) {
-        setError((err as Error).message);
+        const errorMessage = (err as Error).message;
+        setError(errorMessage);
+        toast.error(errorMessage);
       }
     });
   };
@@ -80,7 +84,9 @@ export default function ReservationForm({ books, token }: Props) {
         <select
           name="book"
           value={form.book}
-          onChange={(e) => setForm((prev) => ({ ...prev, book: e.target.value }))}
+          onChange={(e) =>
+            setForm((prev) => ({ ...prev, book: e.target.value }))
+          }
           className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
         >
           {bookOptions.map((book) => (
@@ -90,7 +96,7 @@ export default function ReservationForm({ books, token }: Props) {
           ))}
         </select>
       </label>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 mt-2 md:grid-cols-2">
         <label className="text-sm font-semibold text-slate-700">
           Borrow date
           <input

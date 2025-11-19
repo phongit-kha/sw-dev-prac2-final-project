@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createBook } from "@/libs/books";
+import toast from "react-hot-toast";
 
 interface Props {
   token: string;
@@ -41,9 +42,12 @@ export default function BookForm({ token }: Props) {
           availableAmount: Number(form.availableAmount),
         });
         setForm(initialState);
+        toast.success("Book created successfully!");
         router.refresh();
       } catch (err) {
-        setError((err as Error).message);
+        const errorMessage = (err as Error).message;
+        setError(errorMessage);
+        toast.error(errorMessage);
       }
     });
   };

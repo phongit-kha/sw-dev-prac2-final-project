@@ -6,6 +6,7 @@ import { deleteReservation, updateReservation } from "@/libs/reservations";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 interface Props {
   reservations: Reservation[];
@@ -64,9 +65,12 @@ export default function ReservationList({
           pickupDate: draftPickup,
         });
         cancelEdit();
+        toast.success("Reservation updated successfully!");
         router.refresh();
       } catch (err) {
-        setError((err as Error).message);
+        const errorMessage = (err as Error).message;
+        setError(errorMessage);
+        toast.error(errorMessage);
       }
     });
   };
@@ -76,9 +80,12 @@ export default function ReservationList({
     startTransition(async () => {
       try {
         await deleteReservation(token, id);
+        toast.success("Reservation deleted successfully!");
         router.refresh();
       } catch (err) {
-        setError((err as Error).message);
+        const errorMessage = (err as Error).message;
+        setError(errorMessage);
+        toast.error(errorMessage);
       }
     });
   };

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Book } from "../../interfaces";
 import { deleteBook, updateBookStock } from "@/libs/books";
 import { useState, useTransition } from "react";
+import toast from "react-hot-toast";
 
 interface Props {
   books: Book[];
@@ -22,9 +23,12 @@ export default function BookManagementTable({ books, token }: Props) {
     startTransition(async () => {
       try {
         await deleteBook(token, id);
+        toast.success("Book deleted successfully!");
         router.refresh();
       } catch (err) {
-        setError((err as Error).message);
+        const errorMessage = (err as Error).message;
+        setError(errorMessage);
+        toast.error(errorMessage);
       } finally {
         setPendingId(null);
       }
@@ -38,9 +42,12 @@ export default function BookManagementTable({ books, token }: Props) {
     startTransition(async () => {
       try {
         await updateBookStock(token, id, nextValue);
+        toast.success(`Stock updated to ${nextValue}`);
         router.refresh();
       } catch (err) {
-        setError((err as Error).message);
+        const errorMessage = (err as Error).message;
+        setError(errorMessage);
+        toast.error(errorMessage);
       } finally {
         setPendingId(null);
       }

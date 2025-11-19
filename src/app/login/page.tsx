@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useState, useTransition } from "react";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const searchParams = useSearchParams();
@@ -24,9 +25,12 @@ export default function LoginPage() {
         callbackUrl,
       });
       if (res?.error) {
-        setError("Invalid email or password");
+        const errorMessage = "Invalid email or password";
+        setError(errorMessage);
+        toast.error(errorMessage);
         return;
       }
+      toast.success("Signed in successfully!");
       window.location.href = callbackUrl;
     });
   };
