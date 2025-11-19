@@ -93,7 +93,7 @@ export default function RegisterPage() {
             value={form.name}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -104,7 +104,7 @@ export default function RegisterPage() {
             value={form.email}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -114,7 +114,7 @@ export default function RegisterPage() {
             value={form.tel}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -125,7 +125,7 @@ export default function RegisterPage() {
             value={form.password}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -134,7 +134,7 @@ export default function RegisterPage() {
             name="role"
             value={form.role}
             onChange={handleChange}
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           >
             <option value="member">Member</option>
             <option value="admin">Admin</option>
@@ -143,7 +143,7 @@ export default function RegisterPage() {
         <button
           type="submit"
           disabled={isPending}
-          className="w-full mt-4 rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 disabled:opacity-60"
+          className="w-full mt-4 rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 hover:cursor-pointer disabled:opacity-60"
         >
           {isPending ? "Creating account..." : "Sign up"}
         </button>
