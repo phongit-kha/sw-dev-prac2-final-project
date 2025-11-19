@@ -23,7 +23,7 @@ export default async function MemberReservationsPage() {
   const booksWithCovers = attachBookCovers(books);
   const reservationsWithCovers = reservations.map((reservation, index) => ({
     ...reservation,
-    book: attachBookCover(reservation.book, index) ?? reservation.book,
+    book: reservation.book ? attachBookCover(reservation.book, index) : null,
   }));
 
   return (
