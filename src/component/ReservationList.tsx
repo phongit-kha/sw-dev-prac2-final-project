@@ -124,14 +124,12 @@ export default function ReservationList({
             >
               <div className="grid gap-6 p-6 md:grid-cols-[200px_1fr]">
                 <div className="relative h-56 w-full rounded-2xl bg-slate-100">
-                  {reservation.book?.coverPicture && (
-                    <Image
-                      src={reservation.book.coverPicture}
-                      alt={reservation.book.title}
-                      fill
-                      className="rounded-2xl object-cover"
-                    />
-                  )}
+                  <Image
+                    src={reservation.book?.coverPicture || "/images/book-cover.jpg"}
+                    alt={reservation.book?.title || "Book cover"}
+                    fill
+                    className="rounded-2xl object-cover"
+                  />
                 </div>
                 <div className="space-y-4">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">

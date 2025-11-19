@@ -117,9 +117,7 @@ export default function AdminReservationsManagement({
           : bValue.localeCompare(aValue);
       }
 
-      return sortOrder === "asc"
-        ? aValue.diff(bValue)
-        : bValue.diff(aValue);
+      return sortOrder === "asc" ? aValue.diff(bValue) : bValue.diff(aValue);
     });
 
     return filtered;
@@ -203,7 +201,6 @@ export default function AdminReservationsManagement({
       }
     });
   };
-
 
   const getStatusBadge = (status: string) => {
     const styles = {
@@ -363,7 +360,9 @@ export default function AdminReservationsManagement({
                   setSortOrder(sortOrder === "asc" ? "desc" : "asc")
                 }
                 className="rounded-lg border border-slate-200 bg-white p-2.5 text-slate-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
-                title={`Sort ${sortOrder === "asc" ? "Descending" : "Ascending"}`}
+                title={`Sort ${
+                  sortOrder === "asc" ? "Descending" : "Ascending"
+                }`}
               >
                 <ChevronsUpDown className="h-4 w-4" />
               </button>
@@ -374,10 +373,12 @@ export default function AdminReservationsManagement({
         {/* Results count */}
         <div className="mt-5 border-t border-slate-100 pt-4">
           <p className="text-sm text-slate-600">
-            Showing <span className="font-semibold text-slate-900">
+            Showing{" "}
+            <span className="font-semibold text-slate-900">
               {filteredAndSortedReservations.length}
             </span>{" "}
-            of <span className="font-semibold text-slate-900">
+            of{" "}
+            <span className="font-semibold text-slate-900">
               {reservations.length}
             </span>{" "}
             reservation(s)
@@ -420,18 +421,15 @@ export default function AdminReservationsManagement({
                   <div className="flex gap-5">
                     {/* Book Cover */}
                     <div className="relative h-28 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
-                      {reservation.book?.coverPicture ? (
-                        <Image
-                          src={reservation.book.coverPicture}
-                          alt={reservation.book.title || "Book cover"}
-                          fill
-                          className="object-cover"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center">
-                          <BookOpen className="h-8 w-8 text-slate-400" />
-                        </div>
-                      )}
+                      <Image
+                        src={
+                          reservation.book?.coverPicture ||
+                          "/images/book-cover.jpg"
+                        }
+                        alt={reservation.book?.title || "Book cover"}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
 
                     {/* Content */}
@@ -587,4 +585,3 @@ export default function AdminReservationsManagement({
     </div>
   );
 }
-
