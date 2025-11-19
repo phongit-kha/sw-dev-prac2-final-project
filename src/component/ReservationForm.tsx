@@ -130,7 +130,7 @@ export default function ReservationForm({
           Create a reservation
         </h3>
         <p className="text-sm text-slate-500">
-          One book per reservation. Members can have up to 3 active requests.
+          One book per reservation.
         </p>
       </div>
       {error && (

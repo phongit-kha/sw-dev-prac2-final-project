@@ -39,8 +39,7 @@ export default async function MemberReservationsPage() {
           Reservation requests
         </h1>
         <p className="text-sm text-slate-500">
-          Limited to 3 active reservations per member. All data comes from
-          `/api/v1/reservations`.
+          Limited to 3 active reservations per member.
         </p>
       </div>
       <ReservationForm books={booksWithCovers} token={session.user.token} />

@@ -22,10 +22,10 @@ export default function BookHighlight({ books }: Props) {
       <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
         <div>
           <h2 className="text-3xl font-bold text-slate-900">
-            Featured books
+            Spotlight titles for this week
           </h2>
           <p className="text-slate-500">
-            Powered by live data from the p02-library backend
+            Curated straight from your live catalog.
           </p>
         </div>
         <Link
@@ -65,7 +65,7 @@ export default function BookHighlight({ books }: Props) {
                 </h3>
                 <p className="text-sm text-slate-500">{book.author}</p>
                 <p className="text-xs font-semibold text-slate-500">
-                  ISBN: {book.ISBN}
+                ISBN: {book.ISBN}
                 </p>
                 <p className="text-xs text-slate-500">
                   {book.availableAmount} copies available

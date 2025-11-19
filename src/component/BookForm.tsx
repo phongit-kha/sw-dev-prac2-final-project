@@ -61,9 +61,7 @@ export default function BookForm({ token }: Props) {
         <h3 className="text-lg font-semibold text-slate-900">
           Add a new book
         </h3>
-        <p className="text-sm text-slate-500">
-          Provide data that matches the p02-library schema.
-        </p>
+       
       </div>
       {error && (
         <div className="rounded-2xl bg-rose-50 px-3 py-2 text-sm text-rose-600">

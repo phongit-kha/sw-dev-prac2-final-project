@@ -23,7 +23,7 @@ export default async function AdminBooksPage() {
         </p>
         <h1 className="text-3xl font-bold text-slate-900">Manage books</h1>
         <p className="text-sm text-slate-500">
-          Create, edit, delete titles via the `/api/v1/books` endpoints.
+          Add, edit, or remove books from the catalog.
         </p>
       </div>
       <AdminBooksTabs books={books} token={session.user.token} />

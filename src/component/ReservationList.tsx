@@ -102,9 +102,7 @@ export default function ReservationList({
     <section className="space-y-4">
       <div>
         <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
-        <p className="text-sm text-slate-500">
-          Includes populated user and book data straight from the backend.
-        </p>
+        
       </div>
       {error && (
         <div className="rounded-2xl bg-rose-50 px-3 py-2 text-sm text-rose-600">

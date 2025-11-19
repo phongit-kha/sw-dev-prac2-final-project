@@ -11,15 +11,13 @@ export default function LibraryHero({ totalBooks }: Props) {
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:flex-row lg:items-center">
         <div className="flex-1 space-y-6">
           <p className="inline-flex items-center rounded-full bg-white px-4 py-1 text-xs font-semibold text-emerald-600 shadow">
-            Unified library reservation platform
+            Library reservation suite
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-slate-900 lg:text-5xl">
-            Discover, reserve, and manage every book in one place.
+            Manage collections, reservations, and pick-ups without the busywork.
           </h1>
           <p className="text-lg text-slate-600">
-            Access the entire collection, schedule pick-ups in advance, and keep
-            members + admins synchronized in real time through the p02-library
-            API.
+            Give patrons real-time availability, automate pick-up scheduling, and keep librarians aligned with the same operational dashboard.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -38,11 +36,11 @@ export default function LibraryHero({ totalBooks }: Props) {
           <div className="flex gap-8 pt-6 text-sm text-slate-500">
             <div>
               <p className="text-3xl font-bold text-slate-900">{totalBooks}</p>
-              <p>books synced with backend</p>
+              <p>titles live in catalog</p>
             </div>
             <div>
               <p className="text-3xl font-bold text-slate-900">3</p>
-              <p>active reservations per member</p>
+              <p>reservations per member by policy</p>
             </div>
           </div>
         </div>

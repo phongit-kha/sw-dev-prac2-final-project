@@ -72,9 +72,7 @@ export default function RegisterPage() {
   return (
     <div className="mx-auto max-w-md rounded-3xl border border-slate-100 bg-white p-8 shadow-sm">
       <h1 className="text-2xl font-bold text-slate-900">Create an account</h1>
-      <p className="mt-2 text-sm text-slate-500">
-        Choose member or admin to simulate both roles.
-      </p>
+      
       {error && (
         <p className="mt-4 rounded-2xl bg-rose-50 px-3 py-2 text-sm text-rose-600">
           {error}
