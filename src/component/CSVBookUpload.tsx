@@ -297,7 +297,7 @@ export default function CSVBookUpload({ token }: Props) {
             <button
               type="button"
               onClick={handleClear}
-              className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+              className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:cursor-pointer"
             >
               Clear All
             </button>
@@ -316,7 +316,7 @@ export default function CSVBookUpload({ token }: Props) {
                   <button
                     type="button"
                     onClick={() => handleDeleteBook(index)}
-                    className="text-sm text-rose-600 hover:text-rose-700"
+                    className="text-sm text-rose-600 hover:text-rose-700 hover:cursor-pointer"
                   >
                     Remove
                   </button>
@@ -330,7 +330,7 @@ export default function CSVBookUpload({ token }: Props) {
                       onChange={(e) =>
                         handleBookChange(index, "title", e.target.value)
                       }
-                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </label>
                   <label className="text-xs font-semibold text-slate-700">
@@ -341,7 +341,7 @@ export default function CSVBookUpload({ token }: Props) {
                       onChange={(e) =>
                         handleBookChange(index, "author", e.target.value)
                       }
-                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </label>
                   <label className="text-xs font-semibold text-slate-700">
@@ -352,7 +352,7 @@ export default function CSVBookUpload({ token }: Props) {
                       onChange={(e) =>
                         handleBookChange(index, "ISBN", e.target.value)
                       }
-                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </label>
                   <label className="text-xs font-semibold text-slate-700">
@@ -363,7 +363,7 @@ export default function CSVBookUpload({ token }: Props) {
                       onChange={(e) =>
                         handleBookChange(index, "publisher", e.target.value)
                       }
-                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </label>
                   <label className="text-xs font-semibold text-slate-700">
@@ -379,7 +379,7 @@ export default function CSVBookUpload({ token }: Props) {
                           parseInt(e.target.value, 10) || 0
                         )
                       }
-                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </label>
                   <label className="text-xs font-semibold text-slate-700">
@@ -390,7 +390,7 @@ export default function CSVBookUpload({ token }: Props) {
                       onChange={(e) =>
                         handleBookChange(index, "coverPicture", e.target.value)
                       }
-                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </label>
                 </div>
@@ -402,7 +402,7 @@ export default function CSVBookUpload({ token }: Props) {
             type="button"
             onClick={handleAddAll}
             disabled={isPending || books.length === 0}
-            className="w-full rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 disabled:opacity-60"
+            className="w-full rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 hover:cursor-pointer disabled:opacity-60"
           >
             {isPending
               ? `Adding ${books.length} book(s)...`

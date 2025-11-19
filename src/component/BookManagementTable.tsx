@@ -91,7 +91,7 @@ export default function BookManagementTable({ books, token }: Props) {
                       aria-label={`Decrease stock for ${book.title}`}
                       onClick={() => handleStock(book._id, book.availableAmount, -1)}
                       disabled={isPending}
-                      className="px-3 py-1 text-sm font-bold text-slate-500 hover:text-slate-900"
+                      className="px-3 py-1 text-sm font-bold text-slate-500 hover:text-slate-900 hover:cursor-pointer"
                     >
                       -
                     </button>
@@ -102,7 +102,7 @@ export default function BookManagementTable({ books, token }: Props) {
                       aria-label={`Increase stock for ${book.title}`}
                       onClick={() => handleStock(book._id, book.availableAmount, 1)}
                       disabled={isPending}
-                      className="px-3 py-1 text-sm font-bold text-slate-500 hover:text-slate-900"
+                      className="px-3 py-1 text-sm font-bold text-slate-500 hover:text-slate-900 hover:cursor-pointer"
                     >
                       +
                     </button>
@@ -112,7 +112,7 @@ export default function BookManagementTable({ books, token }: Props) {
                   <button
                     onClick={() => handleDelete(book._id)}
                     disabled={isPending && pendingId === book._id}
-                    className="text-sm font-semibold text-rose-500 hover:text-rose-600"
+                    className="text-sm font-semibold text-rose-500 hover:text-rose-600 hover:cursor-pointer"
                   >
                     {pendingId === book._id ? "Deleting..." : "Delete"}
                   </button>
