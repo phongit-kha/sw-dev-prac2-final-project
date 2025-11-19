@@ -22,7 +22,7 @@ export const authOptions: AuthOptions = {
         } catch {
           role = "member";
         }
-        return { ...baseUser, role };
+        return { id: baseUser._id, ...baseUser, role };
       },
     }),
   ],

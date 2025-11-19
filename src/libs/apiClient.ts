@@ -10,9 +10,9 @@ export async function apiFetch<T>(
   { token, skipAuth, headers, ...options }: RequestOptions = {}
 ): Promise<T> {
   const url = `${API_BASE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-  const mergedHeaders: HeadersInit = {
+  const mergedHeaders: Record<string, string> = {
     "Content-Type": "application/json",
-    ...headers,
+    ...(headers as Record<string, string>),
   };
 
   if (token && !skipAuth) {

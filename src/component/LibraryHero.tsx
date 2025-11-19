@@ -79,33 +79,6 @@ export default function LibraryHero({ totalBooks }: Props) {
               </div>
             ))}
           </div>
-          <div className="mt-6 rounded-3xl border border-emerald-100 bg-white/90 p-6 shadow-2xl shadow-emerald-50 backdrop-blur">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-500">
-                  Live sync
-                </p>
-                <p className="text-xl font-bold text-slate-900">
-                  p02-library API
-                </p>
-              </div>
-              <span className="rounded-full bg-emerald-600/10 px-3 py-1 text-xs font-semibold text-emerald-700">
-                connected :5004
-              </span>
-            </div>
-            <div className="mt-4 rounded-2xl bg-slate-900 p-4 text-xs text-emerald-100">
-              <p className="font-mono text-slate-300">
-                POST /api/v1/reservations
-              </p>
-              <pre className="mt-3 font-mono text-slate-200">
-                {`{
-  "borrowDate": "2025-02-01",
-  "pickupDate": "2025-02-02",
-  "book": "<BOOK_ID>"
-}`}
-              </pre>
-            </div>
-          </div>
         </div>
       </div>
     </section>

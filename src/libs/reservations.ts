@@ -2,7 +2,7 @@ import type {
   Reservation,
   ReservationCollectionResponse,
   ReservationResponse,
-} from "../../interfaces";
+} from "@interfaces";
 import { apiFetch } from "./apiClient";
 
 export async function getReservations(token: string): Promise<Reservation[]> {

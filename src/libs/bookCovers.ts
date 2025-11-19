@@ -1,4 +1,4 @@
-import type { Book } from "../../interfaces";
+import type { Book } from "@interfaces";
 
 const coverMap: Record<string, string> = {
   "atomic habits": "/covers/modern-classics.jpg",
@@ -23,8 +23,7 @@ export function attachBookCovers(books: Book[]): Book[] {
   return books.map((book, index) => attachBookCover(book, index));
 }
 
-export function attachBookCover(book?: Book, index = 0): Book | undefined {
-  if (!book) return book;
+export function attachBookCover(book: Book, index = 0): Book {
   const key = book.title?.toLowerCase();
   const cover =
     book.coverPicture ||

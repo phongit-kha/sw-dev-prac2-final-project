@@ -1,4 +1,4 @@
-import { LibraryUser } from "../../interfaces";
+import { LibraryUser } from "@interfaces";
 
 interface Props {
   user: LibraryUser;

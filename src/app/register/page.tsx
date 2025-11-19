@@ -5,9 +5,10 @@ import { registerUser } from "@/libs/auth";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import type { RegisterPayload } from "@interfaces";
 
 export default function RegisterPage() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<RegisterPayload>({
     name: "",
     email: "",
     tel: "",
@@ -22,7 +23,10 @@ export default function RegisterPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm((prev) => ({
+      ...prev,
+      [name]: name === "role" ? (value as RegisterPayload["role"]) : value,
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

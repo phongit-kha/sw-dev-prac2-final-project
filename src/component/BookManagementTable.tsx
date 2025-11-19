@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Book } from "../../interfaces";
+import { Book } from "@interfaces";
 import { deleteBook, updateBookStock } from "@/libs/books";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";

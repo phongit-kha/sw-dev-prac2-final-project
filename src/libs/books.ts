@@ -2,7 +2,7 @@ import type {
   Book,
   BookCollectionResponse,
   BookResponse,
-} from "../../interfaces";
+} from "@interfaces";
 import { apiFetch } from "./apiClient";
 
 export async function getBooks(token?: string): Promise<Book[]> {

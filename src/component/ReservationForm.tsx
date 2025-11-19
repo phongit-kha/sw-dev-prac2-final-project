@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import dayjs from "dayjs";
-import { Book } from "../../interfaces";
+import { Book } from "@interfaces";
 import { createReservation } from "@/libs/reservations";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";

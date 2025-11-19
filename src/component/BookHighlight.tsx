@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Book } from "../../interfaces";
+import type { Book } from "@interfaces";
 import Link from "next/link";
 import { attachBookCovers } from "@/libs/bookCovers";
 

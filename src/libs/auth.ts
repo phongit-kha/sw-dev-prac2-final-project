@@ -1,5 +1,5 @@
 import { apiFetch } from "./apiClient";
-import type { AuthResponse, RegisterPayload, LibraryUser } from "../../interfaces";
+import type { AuthResponse, RegisterPayload, LibraryUser } from "@interfaces";
 
 export async function loginUser(email: string, password: string) {
   return apiFetch<AuthResponse>("/auth/login", {

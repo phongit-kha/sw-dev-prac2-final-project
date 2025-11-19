@@ -1,6 +1,6 @@
 "use client";
 
-import { Reservation } from "../../interfaces";
+import { Reservation } from "@interfaces";
 import dayjs from "dayjs";
 import { deleteReservation, updateReservation } from "@/libs/reservations";
 import { useRouter } from "next/navigation";
