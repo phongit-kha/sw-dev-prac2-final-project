@@ -6,6 +6,7 @@ import { getReservations } from "@/libs/reservations";
 import { attachBookCover, attachBookCovers } from "@/libs/bookCovers";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import type { Reservation } from "@/interfaces";
 
 export default async function MemberReservationsPage() {
   const session = await getServerSession(authOptions);
@@ -21,10 +22,12 @@ export default async function MemberReservationsPage() {
     getBooks(session.user.token),
   ]);
   const booksWithCovers = attachBookCovers(books);
-  const reservationsWithCovers = reservations.map((reservation, index) => ({
-    ...reservation,
-    book: reservation.book ? attachBookCover(reservation.book, index) : null,
-  }));
+  const reservationsWithCovers = reservations
+    .filter((reservation): reservation is Reservation => reservation.book !== null)
+    .map((reservation, index) => ({
+      ...reservation,
+      book: attachBookCover(reservation.book, index) ?? reservation.book,
+    }));
 
   return (
     <div className="mx-auto max-w-6xl space-y-8 px-6">
