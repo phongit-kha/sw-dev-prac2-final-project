@@ -32,7 +32,7 @@ export default async function MemberBooksPage() {
           >
             <div className="relative h-60 w-full">
               <Image
-                src={book.coverPicture || "/covers/modern-classics.jpg"}
+                src={book.coverPicture || "/images/book-cover.jpg"}
                 alt={book.title}
                 fill
                 className="object-cover"

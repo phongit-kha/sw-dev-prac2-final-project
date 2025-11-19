@@ -34,12 +34,6 @@ export default function LibraryHero({ totalBooks }: Props) {
             >
               Sign in
             </Link>
-            <Link
-              href="/demo"
-              className="rounded-full bg-white/80 px-6 py-3 text-sm font-semibold text-emerald-600 shadow hover:bg-white"
-            >
-              Watch product video
-            </Link>
           </div>
           <div className="flex gap-8 pt-6 text-sm text-slate-500">
             <div>
@@ -55,10 +49,10 @@ export default function LibraryHero({ totalBooks }: Props) {
         <div className="flex-1">
           <div className="relative grid gap-4 sm:grid-cols-2">
             {[
-              { src: "/covers/modern-classics.jpg", label: "Smart Queue" },
-              { src: "/covers/design-forward.jpg", label: "Digital Shelf" },
-              { src: "/covers/mindfulness.jpg", label: "Pick-up Calendar" },
-              { src: "/covers/urban-travel.jpg", label: "Admin Insights" },
+              { src: "/covers/smart-queue.jpg", label: "Smart Queue" },
+              { src: "/covers/digital-shelf.jpg", label: "Digital Shelf" },
+              { src: "/covers/pickup-calendar.jpeg", label: "Pick-up Calendar" },
+              { src: "/covers/admin-insight.jpeg", label: "Admin Insights" },
             ].map(({ src, label }, index) => (
               <div
                 key={src}
