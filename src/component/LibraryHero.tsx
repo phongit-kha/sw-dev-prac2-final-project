@@ -18,7 +18,8 @@ export default function LibraryHero({ totalBooks }: Props) {
           </h1>
           <p className="text-lg text-slate-600">
             Access the entire collection, schedule pick-ups in advance, and keep
-            members + admins synchronized in real time through the p02-library API.
+            members + admins synchronized in real time through the p02-library
+            API.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -58,25 +59,25 @@ export default function LibraryHero({ totalBooks }: Props) {
               { src: "/covers/design-forward.jpg", label: "Digital Shelf" },
               { src: "/covers/mindfulness.jpg", label: "Pick-up Calendar" },
               { src: "/covers/urban-travel.jpg", label: "Admin Insights" },
-            ].map(
-              ({ src, label }, index) => (
-                <div
-                  key={src}
-                  className={`relative h-48 rounded-3xl border border-white/70 shadow-2xl shadow-emerald-50 ${index % 2 === 1 ? "translate-y-6" : ""}`}
-                >
-                  <Image
-                    src={src}
-                    alt="book cover preview"
-                    fill
-                    className="rounded-3xl object-cover"
-                  />
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-3 left-4 text-sm font-semibold text-white">
-                    {label}
-                  </div>
+            ].map(({ src, label }, index) => (
+              <div
+                key={src}
+                className={`relative h-48 rounded-3xl border border-white/70 shadow-2xl shadow-emerald-50 ${
+                  index % 2 === 1 ? "translate-y-6" : ""
+                }`}
+              >
+                <Image
+                  src={src}
+                  alt="book cover preview"
+                  fill
+                  className="rounded-3xl object-cover"
+                />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-3 left-4 text-sm font-semibold text-white">
+                  {label}
                 </div>
-              )
-            )}
+              </div>
+            ))}
           </div>
           <div className="mt-6 rounded-3xl border border-emerald-100 bg-white/90 p-6 shadow-2xl shadow-emerald-50 backdrop-blur">
             <div className="flex items-center justify-between">
@@ -97,7 +98,7 @@ export default function LibraryHero({ totalBooks }: Props) {
                 POST /api/v1/reservations
               </p>
               <pre className="mt-3 font-mono text-slate-200">
-{`{
+                {`{
   "borrowDate": "2025-02-01",
   "pickupDate": "2025-02-02",
   "book": "<BOOK_ID>"

@@ -117,10 +117,10 @@ export default function RegisterPage() {
         <button
           type="submit"
           disabled={isPending}
-          className="w-full rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 disabled:opacity-60"
+          className="w-full mt-4 rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 disabled:opacity-60"
         >
-        {isPending ? "Creating account..." : "Sign up"}
-      </button>
+          {isPending ? "Creating account..." : "Sign up"}
+        </button>
       </form>
       <p className="mt-4 text-center text-sm text-slate-500">
         Already have an account?{" "}

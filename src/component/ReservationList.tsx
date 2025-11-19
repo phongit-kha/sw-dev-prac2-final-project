@@ -195,7 +195,7 @@ export default function ReservationList({
                 </div>
               </div>
               {(allowEdit || allowDelete) && (
-                <div className="mt-4 flex flex-wrap gap-3">
+                <div className="mt-4 flex flex-wrap gap-3 px-6 pb-6">
                   {allowEdit && (
                     <>
                       {isEditing ? (

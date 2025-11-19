@@ -42,7 +42,7 @@ export default function LoginPage() {
           {error}
         </p>
       )}
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+      <form onSubmit={handleSubmit} className="mt-6 space-y-6">
         <label className="text-sm font-semibold text-slate-700">
           Email
           <input
@@ -66,7 +66,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={isPending}
-          className="w-full rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 disabled:opacity-60"
+          className="mt-4 w-full rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 disabled:opacity-60"
         >
           {isPending ? "Signing in..." : "Sign in"}
         </button>
