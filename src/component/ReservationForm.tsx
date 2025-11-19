@@ -70,6 +70,20 @@ export default function ReservationForm({
   // Use availableBooks as bookOptions
   const bookOptions = availableBooks;
 
+  const handleFillAll = () => {
+    if (availableBooks.length === 0) return;
+    const today = dayjs().startOf("day");
+    const borrowDate = today.format("YYYY-MM-DD");
+    const pickupDate = today.add(7, "day").format("YYYY-MM-DD");
+
+    setForm({
+      book: availableBooks[0]._id,
+      borrowDate,
+      pickupDate,
+    });
+    setError(null);
+  };
+
   const handleQuickFill = (days: number) => {
     const today = dayjs().startOf("day");
     const borrowDate = today.format("YYYY-MM-DD");
@@ -190,6 +204,14 @@ export default function ReservationForm({
             <span className="text-xs font-medium text-slate-600 self-center">
               Quick fill:
             </span>
+            <button
+              type="button"
+              onClick={handleFillAll}
+              disabled={bookOptions.length === 0}
+              className="rounded-lg border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 hover:cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Fill All
+            </button>
             <button
               type="button"
               onClick={() => handleQuickFill(3)}

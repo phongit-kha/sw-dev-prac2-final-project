@@ -44,11 +44,66 @@ export default function RegisterPage() {
     const value = e.target.value;
     setConfirmPassword(value);
     setPasswordError(null);
-    
+
     // Real-time validation
     if (value && form.password && value !== form.password) {
       setPasswordError("Passwords do not match");
     }
+  };
+
+  const handleFillRandom = () => {
+    const firstNames = [
+      "สมชาย",
+      "สมหญิง",
+      "วิชัย",
+      "มาลี",
+      "ประเสริฐ",
+      "สุดา",
+      "วิทยา",
+      "นงเยาว์",
+      "ธีรพงษ์",
+      "กัญญา",
+    ];
+    const lastNames = [
+      "ใจดี",
+      "รักสุข",
+      "เจริญ",
+      "สุขสันต์",
+      "ประเสริฐ",
+      "วัฒนา",
+      "ศรีสุข",
+      "ทองดี",
+      "สุขใจ",
+      "เจริญสุข",
+    ];
+    const randomFirstName =
+      firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLastName =
+      lastNames[Math.floor(Math.random() * lastNames.length)];
+    const randomName = `${randomFirstName} ${randomLastName}`;
+    const randomNum = Math.floor(Math.random() * 1000000);
+    const randomEmail = `user${randomNum}@mail.com`;
+    const randomTel = `08${Math.floor(Math.random() * 9)}${Math.floor(
+      Math.random() * 9
+    )}-${Math.floor(Math.random() * 1000)
+      .toString()
+      .padStart(3, "0")}-${Math.floor(Math.random() * 10000)
+      .toString()
+      .padStart(4, "0")}`;
+    const randomRole = Math.random() > 0.5 ? "member" : "admin";
+    const demoPassword = "123456";
+
+    setForm({
+      name: randomName,
+      email: randomEmail,
+      tel: randomTel,
+      password: demoPassword,
+      role: randomRole as RegisterPayload["role"],
+    });
+    setConfirmPassword(demoPassword);
+    setPasswordError(null);
+    setError(null);
+    setSuccess(null);
   };
 
   const validateForm = (): boolean => {
@@ -120,6 +175,13 @@ export default function RegisterPage() {
         <p className="mt-2 text-sm text-slate-500">
           Choose member or admin to simulate both roles.
         </p>
+        <button
+          type="button"
+          onClick={handleFillRandom}
+          className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 hover:cursor-pointer transition-colors"
+        >
+          Fill Random Data
+        </button>
       </div>
 
       {error && (

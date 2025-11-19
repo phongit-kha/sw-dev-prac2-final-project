@@ -34,12 +34,23 @@ export default function ReservationList({
     setEditingId(reservation._id);
     setDraftBorrow(reservation.borrowDate.split("T")[0]);
     setDraftPickup(reservation.pickupDate.split("T")[0]);
+    setError(null);
+  };
+
+  const handleQuickFillDates = (days: number) => {
+    const today = dayjs().startOf("day");
+    const borrowDate = today.format("YYYY-MM-DD");
+    const pickupDate = today.add(days, "day").format("YYYY-MM-DD");
+    setDraftBorrow(borrowDate);
+    setDraftPickup(pickupDate);
+    setError(null);
   };
 
   const cancelEdit = () => {
     setEditingId(null);
     setDraftBorrow("");
     setDraftPickup("");
+    setError(null);
   };
 
   const submitEdit = () => {
@@ -154,12 +165,25 @@ export default function ReservationList({
                         Borrow date
                       </p>
                       {isEditing && allowEdit ? (
-                        <input
-                          type="date"
-                          value={draftBorrow}
-                          onChange={(e) => setDraftBorrow(e.target.value)}
-                          className="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
-                        />
+                        <>
+                          <input
+                            type="date"
+                            value={draftBorrow}
+                            onChange={(e) => setDraftBorrow(e.target.value)}
+                            className="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                          />
+                          {isEditing && (
+                            <div className="mt-2 flex flex-wrap gap-1.5">
+                              <button
+                                type="button"
+                                onClick={() => handleQuickFillDates(7)}
+                                className="rounded-lg border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 hover:cursor-pointer transition-colors"
+                              >
+                                +7 วัน
+                              </button>
+                            </div>
+                          )}
+                        </>
                       ) : (
                         <p className="text-lg font-semibold text-slate-900">
                           {dayjs(reservation.borrowDate).format("DD MMM YYYY")}
