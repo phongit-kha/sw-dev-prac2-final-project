@@ -12,9 +12,6 @@ export default async function HomePage() {
     <div className="space-y-12">
       <LibraryHero totalBooks={books.length} />
       <BookHighlight books={books} />
-      <LibraryStats />
-      <LibraryWorkflow />
-      <LibraryTestimonials />
     </div>
   );
 }

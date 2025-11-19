@@ -78,7 +78,7 @@ export default function BookForm({ token }: Props) {
             value={form.title}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -88,7 +88,7 @@ export default function BookForm({ token }: Props) {
             value={form.author}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -98,7 +98,7 @@ export default function BookForm({ token }: Props) {
             value={form.ISBN}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -108,7 +108,7 @@ export default function BookForm({ token }: Props) {
             value={form.publisher}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -120,7 +120,7 @@ export default function BookForm({ token }: Props) {
             min={0}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
         <label className="text-sm font-semibold text-slate-700">
@@ -130,14 +130,14 @@ export default function BookForm({ token }: Props) {
             value={form.coverPicture}
             onChange={handleChange}
             required
-            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </label>
       </div>
       <button
         type="submit"
         disabled={isPending}
-        className="w-full rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 disabled:opacity-60"
+        className="w-full rounded-2xl bg-emerald-500 py-3 text-sm font-semibold text-white hover:bg-emerald-600 hover:cursor-pointer disabled:opacity-60"
       >
         {isPending ? "Saving..." : "Add book"}
       </button>

@@ -1,6 +1,4 @@
-import BookForm from "@/component/BookForm";
-import BookManagementTable from "@/component/BookManagementTable";
-import CSVBookUpload from "@/component/CSVBookUpload";
+import AdminBooksTabs from "@/component/AdminBooksTabs";
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { getBooks } from "@/libs/books";
 import { getServerSession } from "next-auth";
@@ -28,9 +26,7 @@ export default async function AdminBooksPage() {
           Create, edit, delete titles via the `/api/v1/books` endpoints.
         </p>
       </div>
-      <CSVBookUpload token={session.user.token} />
-      <BookForm token={session.user.token} />
-      <BookManagementTable books={books} token={session.user.token} />
+      <AdminBooksTabs books={books} token={session.user.token} />
     </div>
   );
 }

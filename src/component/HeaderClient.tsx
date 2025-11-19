@@ -7,19 +7,17 @@ import { BookOpen, ChevronDown, LogOut, UserRound } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 
-const sharedLinks = [{ href: "/demo", label: "Product Demo" }];
 const guestLinks: { href: string; label: string }[] = [];
 
 const memberLinks = [
   { href: "/member/books", label: "Books" },
   { href: "/member/reservations", label: "My reservations" },
-  ...sharedLinks,
 ];
 
 const adminLinks = [
+  { href: "/member/books", label: "Books" },
   { href: "/admin/books", label: "Manage books" },
   { href: "/admin/reservations", label: "All reservations" },
-  ...sharedLinks,
 ];
 
 export default function HeaderClient() {
@@ -71,7 +69,7 @@ export default function HeaderClient() {
         <div className="relative">
           <button
             onClick={() => setOpen((prev) => !prev)}
-            className="flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1.5 text-sm font-semibold text-slate-700 hover:border-emerald-400"
+            className="flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1.5 text-sm font-semibold text-slate-700 hover:border-emerald-400 hover:cursor-pointer"
           >
             <UserRound className="h-4 w-4" />
             {session.user?.name ?? "User"}
@@ -88,7 +86,7 @@ export default function HeaderClient() {
               </Link>
               <button
                 onClick={handleSignOut}
-                className="mt-1 w-full flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50"
+                className="mt-1 w-full flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50 hover:cursor-pointer"
               >
                 Sign out
                 <LogOut className="h-4 w-4" />
