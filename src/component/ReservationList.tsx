@@ -160,7 +160,7 @@ export default function ReservationList({
                           type="date"
                           value={draftBorrow}
                           onChange={(e) => setDraftBorrow(e.target.value)}
-                          className="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
+                          className="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                         />
                       ) : (
                         <p className="text-lg font-semibold text-slate-900">
@@ -177,7 +177,7 @@ export default function ReservationList({
                           type="date"
                           value={draftPickup}
                           onChange={(e) => setDraftPickup(e.target.value)}
-                          className="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"
+                          className="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                         />
                       ) : (
                         <p className="text-lg font-semibold text-slate-900">
@@ -202,7 +202,7 @@ export default function ReservationList({
                 </div>
               </div>
               {(allowEdit || allowDelete) && (
-                <div className="mt-4 flex flex-wrap gap-3 px-6 pb-6">
+                <div className="mt-4 flex flex-wrap gap-3 justify-end px-6 pb-6">
                   {allowEdit && (
                     <>
                       {isEditing ? (
@@ -210,13 +210,13 @@ export default function ReservationList({
                           <button
                             onClick={submitEdit}
                             disabled={isPending}
-                            className="rounded-full bg-emerald-500 px-6 py-2 text-sm font-semibold text-white hover:bg-emerald-600"
+                            className="rounded-full bg-emerald-500 px-6 py-2 text-sm font-semibold text-white hover:bg-emerald-600 hover:cursor-pointer"
                           >
                             Save
                           </button>
                           <button
                             onClick={cancelEdit}
-                            className="rounded-full border border-slate-200 px-6 py-2 text-sm font-semibold text-slate-600"
+                            className="rounded-full border border-slate-200 px-6 py-2 text-sm font-semibold text-slate-600 hover:cursor-pointer"
                           >
                             Cancel
                           </button>
@@ -224,7 +224,7 @@ export default function ReservationList({
                       ) : (
                         <button
                           onClick={() => startEdit(reservation)}
-                          className="rounded-full border border-slate-200 px-6 py-2 text-sm font-semibold text-slate-600 hover:border-emerald-400"
+                          className="rounded-full border border-slate-200 px-6 py-2 text-sm font-semibold text-slate-600 hover:border-emerald-400 hover:cursor-pointer"
                         >
                           Edit dates
                         </button>
@@ -235,7 +235,7 @@ export default function ReservationList({
                     <button
                       onClick={() => handleDelete(reservation._id)}
                       disabled={isPending}
-                      className="rounded-full bg-rose-500 px-6 py-2 text-sm font-semibold text-white hover:bg-rose-600"
+                      className="rounded-full bg-rose-500 px-6 py-2 text-sm font-semibold text-white hover:bg-rose-600 hover:cursor-pointer"
                     >
                       Delete
                     </button>
