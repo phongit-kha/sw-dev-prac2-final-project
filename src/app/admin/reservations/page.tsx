@@ -4,6 +4,7 @@ import { getReservations } from "@/libs/reservations";
 import { attachBookCover } from "@/libs/bookCovers";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import AdminReservationsManagement from "@/component/AdminReservationsManagement";
 
 export default async function AdminReservationsPage() {
   const session = await getServerSession(authOptions);
@@ -31,12 +32,9 @@ export default async function AdminReservationsPage() {
           Admins can edit or delete any reservation regardless of owner.
         </p>
       </div>
-      <ReservationList
+      <AdminReservationsManagement
         reservations={reservations}
         token={session.user.token}
-        allowEdit
-        allowDelete
-        title={`Total ${reservations.length} reservations`}
       />
     </div>
   );
