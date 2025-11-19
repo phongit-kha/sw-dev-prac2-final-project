@@ -20,10 +20,13 @@ const fallbackCovers = [
 ];
 
 export function attachBookCovers(books: Book[]): Book[] {
-  return books.map((book, index) => attachBookCover(book, index));
+  return books.map((book, index) => attachBookCover(book, index)!);
 }
 
-export function attachBookCover(book: Book, index = 0): Book {
+export function attachBookCover(book: Book | null | undefined, index = 0): Book | null {
+  if (!book) {
+    return null;
+  }
   const key = book.title?.toLowerCase();
   const cover =
     book.coverPicture ||
