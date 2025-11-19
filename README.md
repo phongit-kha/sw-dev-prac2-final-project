@@ -1,29 +1,65 @@
-# Create T3 App
+# Library Management Frontend
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Modern Next.js 15 frontend that consumes the [`p02-library`](../p02-library) API to power a real-world book reservation experience. The project uses React 19, Tailwind CSS 4, and NextAuth (Credentials provider) to mirror the production-ready “Exhibition Booth Booking” layout.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- Landing page with hero, stats, workflow, testimonials, and live book highlights from `/api/v1/books`
+- Authentication via NextAuth (credentials flow) hitting `/auth/login`, `/auth/register`, `/auth/me`
+- Member dashboard
+  - Browse books with rich cover art
+  - Create/view/edit/delete reservations (max 3, borrow ≥ today, pickup ≥ borrow)
+- Admin dashboard
+  - Create/update/delete books and adjust stock
+  - View/edit/delete every reservation
+- Protected routes enforced by `middleware.ts`
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Environment
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+Create `.env.local`:
 
-## Learn More
+```
+NEXTAUTH_SECRET=your_random_secret
+NEXTAUTH_URL=http://localhost:3000
+LIBRARY_API_BASE=http://localhost:5004/api/v1
+NEXT_PUBLIC_LIBRARY_API_BASE=http://localhost:5004/api/v1
+```
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Commands
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```
+npm install
+npm run dev
+npm run build
+npm run start
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## Structure
 
-## How do I deploy this?
+```
+src/
+├── app/
+│   ├── api/auth/[...nextauth]/   # NextAuth handler
+│   ├── admin/                    # Admin pages (books + reservations)
+│   ├── member/                   # Member pages (books + reservations)
+│   ├── profile/                  # View logged-in profile
+│   ├── login/ & register/        # Auth forms
+│   ├── demo/                     # Product video page
+│   ├── layout.tsx                # Root layout with header
+│   └── page.tsx                  # Landing page
+├── component/                    # Reusable UI blocks
+├── libs/                         # API helpers and utilities
+├── providers/                    # NextAuth provider
+└── styles/                       # Tailwind globals
+```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## Backend Integration Notes
+
+- All requests use `LIBRARY_API_BASE`
+- Authenticated requests append `Authorization: Bearer <token>`
+- Client forms perform basic validation, but backend rules (reservation limits, date checks) remain the source of truth
+
+## Next steps
+
+- Swap the demo video/link inside `src/app/demo/page.tsx` with your actual product video
+- Extend `src/libs/bookCovers.ts` with more mappings to match real book titles

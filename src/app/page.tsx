@@ -1,37 +1,51 @@
-import Link from "next/link";
+import LibraryHero from "@/component/LibraryHero";
+import BookHighlight from "@/component/BookHighlight";
+import LibraryStats from "@/component/LibraryStats";
+import LibraryWorkflow from "@/component/LibraryWorkflow";
+import LibraryTestimonials from "@/component/LibraryTestimonials";
+import { getBooks } from "@/libs/books";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const books = await getBooks();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
+    <div className="space-y-12">
+      <LibraryHero totalBooks={books.length} />
+      <BookHighlight books={books} />
+      <LibraryStats />
+      <LibraryWorkflow />
+      <LibraryTestimonials />
+      <section className="mx-auto max-w-6xl rounded-3xl border border-slate-100 bg-white px-8 py-10 text-slate-600 shadow-sm">
+        <h2 className="text-2xl font-semibold text-slate-900">
+          Requirement Highlights
+        </h2>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <article className="rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4">
+            <h3 className="text-sm font-semibold text-emerald-700">
+              User Management
+            </h3>
+            <p className="mt-2 text-sm">
+              Supports admin + member roles, credential-based NextAuth login, and JWT from p02-library.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4">
+            <h3 className="text-sm font-semibold text-emerald-700">
+              Book Management
+            </h3>
+            <p className="mt-2 text-sm">
+              Everyone can view books, while admins can add, edit, delete, and adjust stock.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4">
+            <h3 className="text-sm font-semibold text-emerald-700">
+              Reservation Flow
+            </h3>
+            <p className="mt-2 text-sm">
+              Members may create up to 3 reservations with the same borrow/pickup validation rules as the backend.
+            </p>
+          </article>
         </div>
-      </div>
-    </main>
+      </section>
+    </div>
   );
 }
