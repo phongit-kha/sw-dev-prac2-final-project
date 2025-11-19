@@ -28,10 +28,9 @@ NEXT_PUBLIC_LIBRARY_API_BASE=http://localhost:5004/api/v1
 ## Commands
 
 ```
-npm install
-npm run dev
-npm run build
-npm run start
+pnpm install
+pnpm dev
+pnpm build
 ```
 
 ## Structure

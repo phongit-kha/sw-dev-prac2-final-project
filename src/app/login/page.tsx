@@ -14,6 +14,18 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
+  const handleFillAdmin = () => {
+    setEmail("admin@mail.com");
+    setPassword("123456");
+    setError(null);
+  };
+
+  const handleFillMember = () => {
+    setEmail("member@mail.com");
+    setPassword("123456");
+    setError(null);
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
@@ -38,7 +50,25 @@ export default function LoginPage() {
   return (
     <div className="mx-auto max-w-md rounded-3xl border border-slate-100 bg-white p-8 shadow-sm">
       <h1 className="text-2xl font-bold text-slate-900">Sign in</h1>
-      
+      <p className="mt-2 text-sm text-slate-500">
+        Use the credentials created via the p02-library backend
+      </p>
+      <div className="mt-3 flex gap-1.5">
+        <button
+          type="button"
+          onClick={handleFillAdmin}
+          className="rounded-lg border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 hover:cursor-pointer transition-colors"
+        >
+          Fill as Admin
+        </button>
+        <button
+          type="button"
+          onClick={handleFillMember}
+          className="rounded-lg border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 hover:cursor-pointer transition-colors"
+        >
+          Fill as Member
+        </button>
+      </div>
       {error && (
         <p className="mt-4 rounded-2xl bg-rose-50 px-3 py-2 text-sm text-rose-600">
           {error}
